@@ -133,6 +133,9 @@
     var gpx = '20150722_Lindkogel_mit_Karli.gpx';
     new L.GPX(gpx, {async: true}).on('loaded', function(e) {
       mymap.fitBounds(e.target.getBounds());
+      console.log('File loaded');
+    }).on('error', function(e) {
+      console.log('Error loading file: ' + e.err)
     }).addTo(mymap);
 
     //L.control.locate({position: 'topright',strings: {title: "Locate me!"}}).addTo(mymap);
