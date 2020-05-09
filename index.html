@@ -170,6 +170,12 @@
 
     mymap.on('locationfound', onLocationFound);
     mymap.on('locationerror', onLocationError);
+    
+    var gpx = '20150722_Lindkogel_mit_Karli.gpx';
+    new L.GPX(gpx, {async: true}).on('loaded', function(e) {
+      mymap.fitBounds(e.target.getBounds());
+    }).addTo(mymap);
+    
   </script>
 </body>
 
