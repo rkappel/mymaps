@@ -129,6 +129,11 @@
     //myCtrl.removeFrom(map); // remove it
 
     myCtrl.addTo(mymap); // add it again
+    
+    var gpx = '20150722_Lindkogel_mit_Karli.gpx';
+    new L.GPX(gpx, {async: true}).on('loaded', function(e) {
+      mymap.fitBounds(e.target.getBounds());
+    }).addTo(mymap);
 
     //L.control.locate({position: 'topright',strings: {title: "Locate me!"}}).addTo(mymap);
 
@@ -171,10 +176,7 @@
     mymap.on('locationfound', onLocationFound);
     mymap.on('locationerror', onLocationError);
     
-    var gpx = '20150722_Lindkogel_mit_Karli.gpx';
-    new L.GPX(gpx, {async: true}).on('loaded', function(e) {
-      mymap.fitBounds(e.target.getBounds());
-    }).addTo(mymap);
+
     
   </script>
 </body>
