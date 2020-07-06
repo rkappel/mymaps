@@ -103,14 +103,11 @@
     google_sat = L.tileLayer(GoogleUrl, {id: 's', attribution: mapboxAttribution});
     
     google_hybrid = L.tileLayer(GoogleUrl, {id: 'y', attribution: mapboxAttribution});
+    google_street_only = L.tileLayer(GoogleUrl, {id: 'h', attribution: mapboxAttribution});
+    google_street = L.tileLayer(GoogleUrl, {id: 'm', attribution: mapboxAttribution});
+    google_gelaende = L.tileLayer(GoogleUrl, {id: 't', attribution: mapboxAttribution});
 	
-/*h = Nur Straßen
-m = Straßenklarte
-p = Gelände
-s = Satellit
-t = Nur Gelände
-y = Hybrid
-*/
+
     var baseMaps = {
       "OSM_Cycle": OSM_cycle,
       "OSM_Landscape": OSM_landscape,
@@ -120,8 +117,11 @@ y = Hybrid
       "OpenTopoMap": opentopomap,
       //"MapBox_Satellite": MB_sat,
       //"MapBox_Terrain": MB_terrain,
-      "Google_Sat": google_sat,
-      "Google Hybrid": google_hybrid
+      "Google Satellite": google_sat,
+      "Google Hybrid": google_hybrid,
+      "Google streetonly": google_street_only,
+      "Google street": google_street,
+      "Google gelaende": google_gelaende
     };
 
     var mymap = L.map('mapid', {
