@@ -59,9 +59,9 @@
 		
     var popup = L.popup();
     var OSMUrl = 'https://a.tile.thunderforest.com/{id}/{z}/{x}/{y}{r}.png';
-		var OTMUrl = 'https://a.tile.opentopomap.org/{z}/{x}/{y}.png';
+    var OTMUrl = 'https://a.tile.opentopomap.org/{z}/{x}/{y}.png';
     var mapboxUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
-    var GoogleUrl = 'https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}';
+    var GoogleUrl = 'https://mt1.google.com/vt/lyrs={id}&x={x}&y={y}&z={z}';
     var mapboxAttribution;
     var
       OSM_cycle = L.tileLayer(OSMUrl, {
@@ -100,18 +100,28 @@
       id: 'mapbox.mapbox-terrain-v2',
       attribution: mapboxAttribution
     });
-    google_sat = L.tileLayer(GoogleUrl, {id: 'google_sat', attribution: mapboxAttribution});
-
+    google_sat = L.tileLayer(GoogleUrl, {id: 's', attribution: mapboxAttribution});
+    
+    google_hybrid = L.tileLayer(GoogleUrl, {id: 'y', attribution: mapboxAttribution});
+	
+/*h = Nur Straßen
+m = Straßenklarte
+p = Gelände
+s = Satellit
+t = Nur Gelände
+y = Hybrid
+*/
     var baseMaps = {
       "OSM_Cycle": OSM_cycle,
       "OSM_Landscape": OSM_landscape,
       "OSM_Outdoors": OSM_outdoors,
       "OSM_Neighbourhood": OSM_neighbourhood,
       "OSM_Transport": OSM_transport,
-			"OpenTopoMap": opentopomap,
-      "MapBox_Satellite": MB_sat,
-      "MapBox_Terrain": MB_terrain,
-      "Google_Sat": google_sat
+      "OpenTopoMap": opentopomap,
+      //"MapBox_Satellite": MB_sat,
+      //"MapBox_Terrain": MB_terrain,
+      "Google_Sat": google_sat,
+      "Google Hybrid": google_hybrid
     };
 
     var mymap = L.map('mapid', {
