@@ -61,73 +61,43 @@
     var OSMUrl = 'https://a.tile.thunderforest.com/{id}/{z}/{x}/{y}{r}.png';
     var OTMUrl = 'https://a.tile.opentopomap.org/{z}/{x}/{y}.png';
     var mapboxUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
+    //var GoogleUrl = 'https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}';
     var GoogleUrl = 'https://mt1.google.com/vt/lyrs={id}&x={x}&y={y}&z={z}';
-    var basemapUrl = 'https://maps1.wien.gv.at/basemap/[id}/google3857/geolandbasemap/{z}/{y}/{x}.png';
+    var basemapUrl = 'https://maps.wien.gv.at/basemap/{id}/normal/google3857/{z}/{y}/{x}.png';
     var mapboxAttribution;
-    var OSM_cycle = L.tileLayer(OSMUrl, {id: 'cycle', attribution: mapboxAttribution}),
-      OSM_landscape = L.tileLayer(OSMUrl, {
-        id: 'landscape',
-        attribution: mapboxAttribution
-      });
-    OSM_outdoors = L.tileLayer(OSMUrl, {
-      id: 'outdoors',
-      attribution: mapboxAttribution
-    });
-    OSM_neighbourhood = L.tileLayer(OSMUrl, {
-      id: 'neighbourhood',
-      attribution: mapboxAttribution
-    });
-    OSM_transport = L.tileLayer(OSMUrl, {
-      id: 'transport',
-      attribution: mapboxAttribution
-    });
-    OSM_transport = L.tileLayer(OSMUrl, {
-      id: 'transport',
-      attribution: mapboxAttribution
-    });
-    opentopomap = L.tileLayer(OTMUrl, {
-      id: '',
-      attribution: mapboxAttribution
-    });
-    MB_sat = L.tileLayer(mapboxUrl, {
-      id: 'mapbox.satellite',
-      attribution: mapboxAttribution
-    });
-    MB_terrain = L.tileLayer(mapboxUrl, {
-      id: 'mapbox.mapbox-terrain-v2',
-      attribution: mapboxAttribution
-    });
-    google_sat = L.tileLayer(GoogleUrl, {id: 's', attribution: mapboxAttribution});
     
-    google_hybrid = L.tileLayer(GoogleUrl, {id: 'y', attribution: mapboxAttribution});
-    //google_street_only = L.tileLayer(GoogleUrl, {id: 'h', attribution: mapboxAttribution});
-    google_street = L.tileLayer(GoogleUrl, {id: 'm', attribution: mapboxAttribution});
-    //google_gelaende = L.tileLayer(GoogleUrl, {id: 't', attribution: mapboxAttribution});
-    BM_geolandbasemap = L.tileLayer(basemapUrl, {
-      id: 'normal',
-      attribution: mapboxAttribution
-    });
-
+    var OSM_cycle = L.tileLayer(OSMUrl, {id: 'cycle', attribution: mapboxAttribution});
+    var OSM_landscape = L.tileLayer(OSMUrl, {id: 'landscape', attribution: mapboxAttribution});
+    var OSM_outdoors = L.tileLayer(OSMUrl, {id: 'outdoors', attribution: mapboxAttribution});
+    var OSM_neighbourhood = L.tileLayer(OSMUrl, {id: 'neighbourhood', attribution: mapboxAttribution});
+    var OSM_transport = L.tileLayer(OSMUrl, {id: 'transport', attribution: mapboxAttribution});
+    var OSM_transport = L.tileLayer(OSMUrl, {id: 'transport', attribution: mapboxAttribution});
+    var opentopomap = L.tileLayer(OTMUrl, {id: '', attribution: mapboxAttribution});
+    var MB_sat = L.tileLayer(mapboxUrl, {id: 'mapbox.satellite', attribution: mapboxAttribution});
+    //var MB_terrain = L.tileLayer(mapboxUrl, {id: 'mapbox.mapbox-terrain-v2', attribution: mapboxAttribution});
+    var google_sat = L.tileLayer(GoogleUrl, {id: 's', attribution: mapboxAttribution});
+		var google_hybrid = L.tileLayer(GoogleUrl, {id: 'y', attribution: mapboxAttribution});
+    var google_street = L.tileLayer(GoogleUrl, {id: 'm', attribution: mapboxAttribution});
+    var BM_geolandbasemap = L.tileLayer(basemapUrl, {id: 'geolandbasemap', attribution: mapboxAttribution});
+		
     var baseMaps = {
       "OSM_Cycle": OSM_cycle,
       "OSM_Landscape": OSM_landscape,
       "OSM_Outdoors": OSM_outdoors,
       "OSM_Neighbourhood": OSM_neighbourhood,
       "OSM_Transport": OSM_transport,
-      "OpenTopoMap": opentopomap,
-      //"MapBox_Satellite": MB_sat,
-      //"MapBox_Terrain": MB_terrain,
-      "Google Satellite": google_sat,
-      "Google Hybrid": google_hybrid,
-    //  "Google streetonly": google_street_only,
-      "Google street": google_street,
-    //  "Google gelaende": google_gelaende,
-      "basemap - geolandbasemap": BM_geolandbasemap,
+			"OpenTopoMap": opentopomap,
+      "MapBox_Satellite": MB_sat,
+      <!-- "MapBox_Terrain": MB_terrain, -->
+      "Google Sat": google_sat,
+			"Google Hybrid": google_hybrid,
+      "Google Street": google_street,
+			"BaseMap - geolandbasemap": BM_geolandbasemap,
     };
 
     var mymap = L.map('mapid', {
       center: [47.9174, 16.1805],
-      zoom: 14,
+      zoom: 10,
       layers: [OSM_cycle]
     });
 
@@ -136,7 +106,7 @@
 
     var myCtrl = L.control.locate({
       locateOptions: {
-        maxZoom: 15
+        maxZoom: 20
       }
     }).addTo(mymap);
 
@@ -145,26 +115,26 @@
     
 		const rgb = (r, g, b) => `rgb(${Math.floor(r)},${Math.floor(g)},${Math.floor(b)})`;
 		
-    //for (let i = 0; i < filelist.length; i++) {
-		//	new L.GPX("GPX/"+filelist[i], {async: true,
-		//		polyline_options: {
-		//			color: rgb(0, 255, i % 256),
-		//			opacity: 0.5,
-		//			weight: 2,
-		//			lineCap: 'round'
-		//		},
-		//		marker_options: {
-		//			startIconUrl: '',
-		//			endIconUrl: '',
-		//			shadowUrl: ''
-		//		}
-		//	}).on('loaded', function(e) {
-		//		//mymap.fitBounds(e.target.getBounds());
-		//		console.log('File loaded');
-		//	}).on('error', function(e) {
-		//		console.log('Error loading file: ' + e.err)
-		//	}).addTo(mymap);
-		//}
+		<!-- for (let i = 0; i < filelist.length; i++) { -->
+			<!-- new L.GPX("GPX/"+filelist[i], {async: true, -->
+				<!-- polyline_options: { -->
+					<!-- color: rgb(255, 255, 0), -->
+					<!-- opacity: 0.66, -->
+					<!-- weight: 2, -->
+					<!-- lineCap: 'round' -->
+				<!-- }, -->
+				<!-- marker_options: { -->
+					<!-- startIconUrl: '', -->
+					<!-- endIconUrl: '', -->
+					<!-- shadowUrl: '' -->
+				<!-- } -->
+			<!-- }).on('loaded', function(e) { -->
+				<!-- //mymap.fitBounds(e.target.getBounds()); -->
+				<!-- console.log('File loaded'); -->
+			<!-- }).on('error', function(e) { -->
+				<!-- console.log('Error loading file: ' + e.err) -->
+			<!-- }).addTo(mymap); -->
+		<!-- } -->
 
     //L.control.locate({position: 'topright',strings: {title: "Locate me!"}}).addTo(mymap);
 
