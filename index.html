@@ -64,11 +64,7 @@
     var GoogleUrl = 'https://mt1.google.com/vt/lyrs={id}&x={x}&y={y}&z={z}';
     var basemapUrl = 'https://maps1.wien.gv.at/basemap/[id}/google3857/geolandbasemap/{z}/{y}/{x}.png';
     var mapboxAttribution;
-    var
-      OSM_cycle = L.tileLayer(OSMUrl, {
-        id: 'cycle',
-        attribution: mapboxAttribution
-      }),
+    var OSM_cycle = L.tileLayer(OSMUrl, {id: 'cycle', attribution: mapboxAttribution}),
       OSM_landscape = L.tileLayer(OSMUrl, {
         id: 'landscape',
         attribution: mapboxAttribution
@@ -108,7 +104,7 @@
     google_street = L.tileLayer(GoogleUrl, {id: 'm', attribution: mapboxAttribution});
     //google_gelaende = L.tileLayer(GoogleUrl, {id: 't', attribution: mapboxAttribution});
     BM_geolandbasemap = L.tileLayer(basemapUrl, {
-      id: 'geolandbasemap',
+      id: 'normal',
       attribution: mapboxAttribution
     });
 
