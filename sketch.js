@@ -7,7 +7,7 @@ async function test(){
    const signature = CryptoJS.HmacSHA256(queryString, binance_api_secret).toString();
 //   const binance_url = 'https://api.binance.com/sapi/v1/accountSnapshot?'+queryString+'&signature='+signature;
    const binance_url = 'https://api.binance.com/sapi/v1/accountSnapshot?type=MARGIN&timestamp=1634550691035&signature=9fa527dc5b9d768f4c43194acf502840632a102bc99fed5778febccb8caa51a6';
-   console.log(binance_url);
+    console.log(binance_url);
 
    const status = await (fetch(binance_url,
       { method: "GET",
