@@ -70,13 +70,13 @@
     var OSM_landscape = L.tileLayer(OSMUrl, {id: 'landscape', attribution: mapboxAttribution});
     var OSM_outdoors = L.tileLayer(OSMUrl, {id: 'outdoors', attribution: mapboxAttribution});
     var OSM_neighbourhood = L.tileLayer(OSMUrl, {id: 'neighbourhood', attribution: mapboxAttribution});
-    var OSM_transport = L.tileLayer(OSMUrl, {id: 'transport', attribution: mapboxAttribution});
+    var OSM_atlas = L.tileLayer(OSMUrl, {id: 'atlas', attribution: mapboxAttribution});
     var OSM_transport = L.tileLayer(OSMUrl, {id: 'transport', attribution: mapboxAttribution});
     var opentopomap = L.tileLayer(OTMUrl, {id: '', attribution: mapboxAttribution});
     var MB_sat = L.tileLayer(mapboxUrl, {id: 'mapbox.satellite', attribution: mapboxAttribution});
     //var MB_terrain = L.tileLayer(mapboxUrl, {id: 'mapbox.mapbox-terrain-v2', attribution: mapboxAttribution});
     var google_sat = L.tileLayer(GoogleUrl, {id: 's', attribution: mapboxAttribution});
-		var google_hybrid = L.tileLayer(GoogleUrl, {id: 'y', attribution: mapboxAttribution});
+    var google_hybrid = L.tileLayer(GoogleUrl, {id: 'y', attribution: mapboxAttribution});
     var google_street = L.tileLayer(GoogleUrl, {id: 'm', attribution: mapboxAttribution});
     var BM_geolandbasemap = L.tileLayer(basemapUrl, {id: 'geolandbasemap', attribution: mapboxAttribution});
 		
@@ -86,13 +86,14 @@
       "OSM_Outdoors": OSM_outdoors,
       "OSM_Neighbourhood": OSM_neighbourhood,
       "OSM_Transport": OSM_transport,
-			"OpenTopoMap": opentopomap,
+      "OSM_Atlas": OSM_atlas,
+      "OpenTopoMap": opentopomap,
       "MapBox_Satellite": MB_sat,
       <!-- "MapBox_Terrain": MB_terrain, -->
       "Google Sat": google_sat,
-			"Google Hybrid": google_hybrid,
+      "Google Hybrid": google_hybrid,
       "Google Street": google_street,
-			"BaseMap - geolandbasemap": BM_geolandbasemap,
+      "BaseMap - geolandbasemap": BM_geolandbasemap,
     };
 
     var mymap = L.map('mapid', {
